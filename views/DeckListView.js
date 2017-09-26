@@ -1,13 +1,20 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 
-const DeckListView = () => (
+export const DeckListView = ({decks = []}) => (
   <View>
     <Text>Deck List</Text>
+    {decks.map(({title}) => <Text key={title}>{title}</Text>)}
   </View>
 );
 
 DeckListView.navigationOptions = {
   tabBarLabel: 'Deck List'
 }
-export default DeckListView;
+
+const mapStateToProps = (state) => ({
+  decks: state
+});
+
+export default connect(mapStateToProps)(DeckListView);

@@ -2,12 +2,16 @@ import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import { Constants } from 'expo';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { logger } from 'redux-logger';
 import DeckListView from './views/DeckListView';
 import NewDeckView from './views/NewDeckView';
+import reducer from './reducers';
 
 const AppStatusBar = (props) => (
   <View style={{ height: Constants.statusBarHeight }}>
-    <StatusBar {...props}/>
+    <StatusBar {...props} />
   </View>
 );
 
@@ -23,10 +27,12 @@ const Tabs = TabNavigator({
 export default class App extends React.Component {
   render() {
     return (
-      <View style={{flex: 1}}>
-        <AppStatusBar />
-        <Tabs />
-      </View>
+      <Provider store={createStore(reducer, applyMiddleware(logger))}>
+        <View style={{ flex: 1 }}>
+          <AppStatusBar />
+          <Tabs />
+        </View>
+      </Provider>
     );
   }
 }

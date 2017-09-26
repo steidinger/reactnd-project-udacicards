@@ -1,9 +1,9 @@
 import React from 'react';
-import { NewDeckView } from './NewDeckView';
+import { DeckListView } from './DeckListView';
 
 import renderer from 'react-test-renderer';
 
 it('renders without crashing', () => {
-  const rendered = renderer.create(<NewDeckView />).toJSON();
+  const rendered = renderer.create(<DeckListView />).toJSON();
   expect(rendered).toBeTruthy();
 });

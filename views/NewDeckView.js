@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, Text, TextInput, Button } from 'react-native';
+import { connect } from 'react-redux';
+import { addDeck } from '../actions';
 
-class NewDeckView extends React.Component {
+export class NewDeckView extends React.Component {
   static navigationOptions = {
     tabBarLabel: 'New Deck'
   }
@@ -13,24 +15,34 @@ class NewDeckView extends React.Component {
     }
   }
 
-  handleChange = (event) => {
-    this.setState({ title: event.target.value })
+  handleChange = (title) => {
+    this.setState({ title });
   }
 
   handleSubmit = () => {
-    // todo: save new deck
+    const { title } = this.state;
     this.setState({ title: ''});
-    this.props.navigation.navigate('DeckList');
+    this.props.onAddDeck(title);
   }
 
   render() {
     return (
       <View>
         <Text>What is the title of your new deck?</Text>
-        <TextInput placeholder="Deck Title" onChange={this.handleChange} />
+        <TextInput placeholder="Deck Title" onChangeText={this.handleChange} />
         <Button onPress={this.handleSubmit} title="Submit" />
       </View>);
   }
 }
 
-export default NewDeckView;
+const mapStateToProps = (state) => ({});
+
+const mapDispatchToProps = (dispatch, { navigation }) => ({
+  onAddDeck: (title) => {
+    // todo: save new deck
+    dispatch(addDeck(title));
+    navigation.navigate('DeckList');
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewDeckView);
