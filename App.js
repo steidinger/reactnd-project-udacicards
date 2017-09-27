@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import { TabNavigator } from 'react-navigation';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Constants } from 'expo';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { logger } from 'redux-logger';
 import DeckListView from './views/DeckListView';
 import NewDeckView from './views/NewDeckView';
+import DeckView from './views/DeckView';
 import reducer from './reducers';
 
 const initialState = [{ title: 'React' }, { title: 'React Native' }];
@@ -26,13 +27,25 @@ const Tabs = TabNavigator({
   }
 });
 
+const ScreenStack = StackNavigator({
+  Home: {
+    screen: Tabs,
+    navigationOptions: {
+      title: 'UdaciCards'
+    }
+  },
+  Deck: {
+    screen: DeckView
+  }
+});
+
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducer, initialState, applyMiddleware(logger))}>
         <View style={{ flex: 1 }}>
           <AppStatusBar />
-          <Tabs />
+          <ScreenStack />
         </View>
       </Provider>
     );

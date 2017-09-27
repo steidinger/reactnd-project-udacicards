@@ -51,7 +51,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch, { navigation }) => ({
-  onDeckSelected: (title) => console.log(`Navigate to ${title}`)
+  onDeckSelected: (title) => navigation.navigate('Deck', { title })
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeckListView);
