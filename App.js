@@ -9,6 +9,8 @@ import DeckListView from './views/DeckListView';
 import NewDeckView from './views/NewDeckView';
 import reducer from './reducers';
 
+const initialState = [{ title: 'React' }, { title: 'React Native' }];
+
 const AppStatusBar = (props) => (
   <View style={{ height: Constants.statusBarHeight }}>
     <StatusBar {...props} />
@@ -27,7 +29,7 @@ const Tabs = TabNavigator({
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={createStore(reducer, applyMiddleware(logger))}>
+      <Provider store={createStore(reducer, initialState, applyMiddleware(logger))}>
         <View style={{ flex: 1 }}>
           <AppStatusBar />
           <Tabs />
