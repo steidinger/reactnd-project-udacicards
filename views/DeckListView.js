@@ -3,7 +3,7 @@ import { View, Text, FlatList, TouchableHighlight, StyleSheet } from 'react-nati
 import { connect } from 'react-redux';
 
 export const DeckListView = ({ decks = [], onDeckSelected }) => {
-  const data = decks.map(({ title }) => ({ key: title, title, cards: [] }));
+  const data = decks.map(({ title, questions }) => ({ key: title, title, cards: questions }));
   return (
     <View>
       <FlatList data={data} renderItem={({ item }) => (
@@ -12,7 +12,7 @@ export const DeckListView = ({ decks = [], onDeckSelected }) => {
           onPress={() => onDeckSelected(item.title)}>
           <View style={styles.container}>
             <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.cards}>{item.cards.length} cards</Text>
+            <Text style={styles.cards}>{item.cards.length} {item.cards.length == 1 ? 'card' : 'cards'}</Text>
           </View>
         </TouchableHighlight>
       )} />

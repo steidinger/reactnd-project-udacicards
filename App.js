@@ -3,14 +3,10 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Constants } from 'expo';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import { logger } from 'redux-logger';
 import DeckListView from './views/DeckListView';
 import NewDeckView from './views/NewDeckView';
 import DeckView from './views/DeckView';
-import reducer from './reducers';
-
-const initialState = [{ title: 'React' }, { title: 'React Native' }];
+import {createStore} from './store';
 
 const AppStatusBar = (props) => (
   <View style={{ height: Constants.statusBarHeight }}>
@@ -42,7 +38,7 @@ const ScreenStack = StackNavigator({
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={createStore(reducer, initialState, applyMiddleware(logger))}>
+      <Provider store={createStore()}>
         <View style={{ flex: 1 }}>
           <AppStatusBar />
           <ScreenStack />
