@@ -49,8 +49,8 @@ const mapStateToProps = (decks, { navigation }) => {
   return { title, questions };
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  onAddCard: (title) => console.log(`add card to ${title}`),
+const mapDispatchToProps = (dispatch, { navigation }) => ({
+  onAddCard: (title) => navigation.navigate('AddQuestion', { title }),
   onStartQuiz: (title) => console.log(`start quiz for ${title}`),
 });
 

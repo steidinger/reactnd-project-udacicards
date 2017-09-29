@@ -5,6 +5,7 @@ import { Constants } from 'expo';
 import { Provider } from 'react-redux';
 import DeckListView from './views/DeckListView';
 import NewDeckView from './views/NewDeckView';
+import NewQuestionView from './views/NewQuestionView';
 import DeckView from './views/DeckView';
 import {createStore} from './store';
 
@@ -32,6 +33,12 @@ const ScreenStack = StackNavigator({
   },
   Deck: {
     screen: DeckView
+  },
+  AddQuestion: {
+    screen: NewQuestionView,
+    navigationOptions: {
+      title: 'Add card'
+    }
   }
 });
 
