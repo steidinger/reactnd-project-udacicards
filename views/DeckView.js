@@ -13,7 +13,11 @@ export const DeckView = ({ title, questions, onAddCard, onStartQuiz }) => (
         <Button title="Add card" onPress={() => onAddCard(title)} />
       </View>
       <View style={{ margin: 20, flex: 1 }}>
-        <Button title="Start quiz" color="darkorchid" onPress={() => onStartQuiz(title, questions)} />
+        <Button
+          title="Start quiz"
+          color="darkorchid"
+          disabled={questions.length === 0}
+          onPress={() => onStartQuiz(title, questions)} />
       </View>
     </View>
   </View>
