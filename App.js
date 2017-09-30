@@ -36,10 +36,7 @@ const ScreenStack = StackNavigator({
     screen: DeckView
   },
   AddQuestion: {
-    screen: NewQuestionView,
-    navigationOptions: {
-      title: 'Add card'
-    }
+    screen: NewQuestionView
   },
   Quiz: {
     screen: QuizView

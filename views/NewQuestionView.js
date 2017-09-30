@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 import { addCard } from '../actions';
 
 class NewQuestionView extends React.Component {
+  static navigationOptions = {
+    title: 'Add card'
+  }
+
   constructor(props) {
     super(props);
     this.state = {

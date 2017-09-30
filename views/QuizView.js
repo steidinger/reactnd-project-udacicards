@@ -16,6 +16,10 @@ const QuizView = ({ showScore }) => {
   );
 }
 
+QuizView.navigationOptions = ({ navigation }) => ({
+  title: `Quiz: ${navigation.state.params.title}`
+});
+
 const mapStateToProps = (state, { navigation }) => {
   const { quiz: { title, showScore } } = state;
   return ({
