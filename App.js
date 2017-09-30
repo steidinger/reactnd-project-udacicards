@@ -8,7 +8,9 @@ import NewDeckView from './views/NewDeckView';
 import NewQuestionView from './views/NewQuestionView';
 import DeckView from './views/DeckView';
 import QuizView from './views/QuizView';
-import {createStore} from './store';
+import { createStore } from './store';
+import { loadDecks } from './db';
+import { decksLoaded } from './actions';
 
 const AppStatusBar = (props) => (
   <View style={{ height: Constants.statusBarHeight }}>
@@ -44,12 +46,18 @@ const ScreenStack = StackNavigator({
 });
 
 export default class App extends React.Component {
+  componentWillMount() {
+    if (!this.store) {
+      this.store = createStore();
+      loadDecks().then(decks => this.store.dispatch(decksLoaded(decks)));
+    }
+  }
   render() {
     return (
-      <Provider store={createStore()}>
+      <Provider store={this.store}>
         <View style={{ flex: 1 }}>
           <AppStatusBar />
-          <ScreenStack />
+          <ScreenStack onNavigationStateChange={null}/>
         </View>
       </Provider>
     );

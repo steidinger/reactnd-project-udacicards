@@ -1,4 +1,4 @@
-import { ADD_CARD, ADD_DECK } from '../actions';
+import { ADD_CARD, ADD_DECK, DECKS_LOADED } from '../actions';
 
 function decks(state = [], action) {
   switch (action.type) {
@@ -9,6 +9,8 @@ function decks(state = [], action) {
         title == action.title
           ? ({ title, questions: questions.concat([action.question]) })
           : ({ title, questions }));
+    case DECKS_LOADED: 
+      return action.decks;
     default:
       return state;
   }
