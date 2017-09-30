@@ -4,32 +4,39 @@ import { connect } from 'react-redux';
 import { answerCard, flipCard } from '../../actions';
 import { findDeckWithTitle } from '../../selectors';
 
-const QuizContent = ({ content, linkText, onPress }) => (
-  <View style={styles.container}>
-    <Text style={styles.question}>{content}</Text>
-    <TouchableHighlight onPress={onPress}>
-      <Text style={styles.link}>{linkText}</Text>
-    </TouchableHighlight>
-  </View>
-);
-
-const Card = ({ question, answer, showAnswer, position, maxPosition, onAnswerCard, onFlipCard }) => (
-  <View>
-    <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-      <Text>{position}/{maxPosition}</Text>
+const Card = ({ question, answer, showAnswer, position, maxPosition, onAnswerCard, onFlipCard }) => {
+  const mainText = showAnswer ? answer : question;
+  const linkText = showAnswer ? 'Question' : 'Answer';
+  return (
+    <View>
+      <View style={styles.quizPosition}>
+        <Text>{position}/{maxPosition}</Text>
+      </View>
+      <View style={styles.container}>
+        <Text style={styles.mainText}>{mainText}</Text>
+        <TouchableHighlight onPress={onFlipCard}>
+          <Text style={styles.link}>{linkText}</Text>
+        </TouchableHighlight>
+      </View>
+      <View style={{ margin: 20 }}>
+        <Button onPress={() => onAnswerCard(true, position == maxPosition)} color="green" title="Correct" />
+      </View>
+      <View style={{ margin: 20 }}>
+        <Button onPress={() => onAnswerCard(false, position == maxPosition)} color="red" title="Inorrect" />
+      </View>
     </View>
-    {!showAnswer && <QuizContent content={question} linkText="Answer" onPress={onFlipCard} />}
-    {showAnswer && <QuizContent content={answer} linkText="Question" onPress={onFlipCard} />}
-    <Button onPress={() => onAnswerCard(true, position == maxPosition)} color="green" title="Correct" />
-    <Button onPress={() => onAnswerCard(false, position == maxPosition)} color="red" title="Inorrect" />
-  </View>
-);
+  )
+};
 
 const styles = StyleSheet.create({
+  quizPosition: {
+    flexDirection: 'row',
+    alignItems: 'flex-start'
+  },
   container: {
     marginBottom: 20
   },
-  question: {
+  mainText: {
     fontSize: 18,
     paddingTop: 4,
     paddingBottom: 4

@@ -12,12 +12,12 @@ import { createStore } from './store';
 import { loadDecks } from './db';
 import { decksLoaded } from './actions';
 
-const AppStatusBar = (props) => (
-  <View style={{ height: Constants.statusBarHeight }}>
-    <StatusBar {...props} />
-  </View>
-);
-
+/**
+ * Use tabs to switch between deck list and 'new deck' form. Normally I'd
+ * rather use a button to go from the list to the form. The screenshots
+ * in the project assignment used tabs however and this way the app can
+ * show how nested navigators work.
+ */
 const Tabs = TabNavigator({
   DeckList: {
     screen: DeckListView
@@ -52,23 +52,17 @@ export default class App extends React.Component {
       loadDecks().then(decks => this.store.dispatch(decksLoaded(decks)));
     }
   }
+
   render() {
     return (
       <Provider store={this.store}>
         <View style={{ flex: 1 }}>
-          <AppStatusBar />
-          <ScreenStack onNavigationStateChange={null}/>
+          <View style={{ height: Constants.statusBarHeight }}>
+            <StatusBar />
+          </View>
+          <ScreenStack onNavigationStateChange={null} />
         </View>
       </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
