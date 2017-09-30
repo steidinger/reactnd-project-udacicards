@@ -5,16 +5,7 @@ const DECKS_STORAGE_KEY = 'UdaciCards:decks';
 export function saveDecks(decks) {
   return new Promise((resolve, reject) => {
     AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks),
-      (error) => {
-        if (error) {
-          console.error('Could not save decks: ', error);
-          reject(error);
-        }
-        else {
-          console.log('Saved decks');
-          resolve()
-        }
-      });
+      (error) => error ? reject(error) : resolve())
   });
 }
 

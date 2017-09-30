@@ -17,7 +17,6 @@ export function createStore() {
   const store = createReduxStore(reducer, applyMiddleware(logger));
   store.subscribe(() => {
     const state = store.getState();
-    console.log(`update DB with ${JSON.stringify(state.decks)}`);
     updateDB(state.decks);
   })
   return store;
