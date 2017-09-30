@@ -11,6 +11,7 @@ import QuizView from './views/QuizView';
 import { createStore } from './store';
 import { loadDecks } from './db';
 import { decksLoaded } from './actions';
+import { setupLocalNotification } from './notifications';
 
 /**
  * Use tabs to switch between deck list and 'new deck' form. Normally I'd
@@ -50,6 +51,7 @@ export default class App extends React.Component {
     if (!this.store) {
       this.store = createStore();
       loadDecks().then(decks => this.store.dispatch(decksLoaded(decks)));
+      setupLocalNotification();
     }
   }
 

@@ -1,6 +1,7 @@
 import { AsyncStorage } from 'react-native';
 
 const DECKS_STORAGE_KEY = 'UdaciCards:decks';
+const NOTIFICATIONS_KEY = 'UdaciCards:notifications';
 
 /**
  * Save all decks and their questions to the DB. Since the app uses
@@ -10,13 +11,9 @@ const DECKS_STORAGE_KEY = 'UdaciCards:decks';
  * If the data really has to be stored in that structure, I could
  * transform the array into that structure on save and reverse the
  * transformation on load.
- * @param {*} decks 
  */
 export function saveDecks(decks) {
-  return new Promise((resolve, reject) => {
-    AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks),
-      (error) => error ? reject(error) : resolve())
-  });
+  return AsyncStorage.setItem(DECKS_STORAGE_KEY, JSON.stringify(decks));
 }
 
 export function loadDecks() {
@@ -38,4 +35,16 @@ export function loadDecks() {
       }
     })
   })
+}
+
+/**
+ * returns false if notification haven't been setup yet.
+ */
+export function loadNotificationStatus() {
+  return AsyncStorage.getItem(NOTIFICATIONS_KEY)
+  .then(JSON.parse)
+}
+
+export function saveNotificationStatus(status) {
+  return AsyncStorage.setItem(NOTIFICATIONS_KEY, JSON.stringify(status));
 }
