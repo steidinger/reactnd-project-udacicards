@@ -9,10 +9,10 @@ export const DeckView = ({ title, questions, onAddCard, onStartQuiz }) => (
     <Text style={styles.title}>{title}</Text>
     <Text style={styles.cards}>{questions.length} {questions.length == 1 ? 'card' : 'cards'}</Text>
     <View style={styles.buttonArea}>
-      <View style={{ margin: 20, flex: 1 }}>
+      <View style={styles.button}>
         <Button title="Add card" onPress={() => onAddCard(title)} />
       </View>
-      <View style={{ margin: 20, flex: 1 }}>
+      <View style={styles.button}>
         <Button
           title="Start quiz"
           color="darkorchid"
@@ -47,6 +47,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  button: {
+    margin: 20,
+    flex: 1
+  }
 });
 
 
