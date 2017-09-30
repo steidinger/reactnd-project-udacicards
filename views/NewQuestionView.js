@@ -48,7 +48,7 @@ class NewQuestionView extends React.Component {
           placeholder="Enter the answer"
           onChangeText={text => this.handleChange('answer', text)}
         />
-        <Button title="Submit" onPress={this.handleSubmit} />
+        <Button title="Submit" onPress={this.handleSubmit} disabled={question.length === 0 || answer.length === 0}/>
       </View>
     )
   }

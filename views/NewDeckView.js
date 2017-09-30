@@ -30,7 +30,7 @@ export class NewDeckView extends React.Component {
       <View style={{padding: 10}}>
         <Text style={styles.label}>What is the title of your new deck?</Text>
         <TextInput style={styles.input} placeholder="Deck Title" onChangeText={this.handleChange} />
-        <Button onPress={this.handleSubmit} title="Submit" />
+        <Button onPress={this.handleSubmit} title="Submit" disabled={this.state.title.length === 0} />
       </View>);
   }
 }
