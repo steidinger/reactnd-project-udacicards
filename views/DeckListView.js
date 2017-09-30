@@ -9,6 +9,7 @@ export const DeckListView = ({ decks = [], onDeckSelected }) => {
       <FlatList data={data} renderItem={({ item }) => (
         <TouchableHighlight
           style={styles.listItem}
+          underlayColor="#00bfffaa"
           onPress={() => onDeckSelected(item.title)}>
           <View style={styles.container}>
             <Text style={styles.title}>{item.title}</Text>
