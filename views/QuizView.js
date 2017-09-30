@@ -7,10 +7,10 @@ import Score from './quiz/Score';
 import Card from './quiz/Card';
 
 
-const QuizView = ({ showScore }) => {
+const QuizView = ({ showScore, navigation }) => {
   return (
     <View style={{ padding: 10 }}>
-      {showScore && <Score />}
+      {showScore && <Score navigation={navigation} />}
       {!showScore && <Card />}
     </View>
   );
@@ -24,7 +24,8 @@ const mapStateToProps = (state, { navigation }) => {
   const { quiz: { title, showScore } } = state;
   return ({
     title,
-    showScore
+    showScore,
+    navigation
   });
 };
 
