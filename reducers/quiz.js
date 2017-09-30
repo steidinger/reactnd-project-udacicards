@@ -1,4 +1,4 @@
-import { START_QUIZ, FLIP_CARD, ANSWER_CARD, SHOW_SCORE } from '../actions';
+import { START_QUIZ, FLIP_CARD, ANSWER_CARD } from '../actions';
 
 export function quiz(state = {}, action) {
   switch (action.type) {
@@ -18,12 +18,8 @@ export function quiz(state = {}, action) {
       return ({
         ...state,
         correctAnswers: state.correctAnswers + (action.correct ? 1 : 0),
-        questionIndex: state.questionIndex + 1
-      });
-    case SHOW_SCORE:
-      return ({
-        ...state,
-        showScore: true
+        questionIndex: state.questionIndex + 1,
+        showScore: action.finished
       });
     default:
       return state;
