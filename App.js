@@ -7,6 +7,7 @@ import DeckListView from './views/DeckListView';
 import NewDeckView from './views/NewDeckView';
 import NewQuestionView from './views/NewQuestionView';
 import DeckView from './views/DeckView';
+import QuizView from './views/QuizView';
 import {createStore} from './store';
 
 const AppStatusBar = (props) => (
@@ -39,6 +40,9 @@ const ScreenStack = StackNavigator({
     navigationOptions: {
       title: 'Add card'
     }
+  },
+  Quiz: {
+    screen: QuizView
   }
 });
 

@@ -1,17 +1,5 @@
-import { ADD_CARD, ADD_DECK } from '../actions';
+import { combineReducers } from 'redux';
+import decks from './decks';
+import quiz from './quiz';
 
-function decks(state = [], action) {
-  switch (action.type) {
-    case ADD_DECK:
-      return state.concat([{ title: action.title, questions: [] }]);
-    case ADD_CARD:
-      return state.map(({ title, questions }) =>
-        title == action.title
-          ? ({ title, questions: questions.concat([action.question]) })
-          : ({ title, questions }));
-    default:
-      return state;
-  }
-}
-
-export default decks;
+export default combineReducers({ decks, quiz });
