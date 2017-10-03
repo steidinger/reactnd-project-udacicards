@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { startQuiz } from '../actions';
-import { findDeckWithTitle } from '../selectors';
+import { findDeckWithTitle } from '../utils/selectors';
 
 export const DeckView = ({ title, questions, onAddCard, onStartQuiz }) => (
   <View style={styles.container}>

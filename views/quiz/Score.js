@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, Button, Text, StyleSheet } from 'react-native';
-import { findDeckWithTitle } from '../../selectors';
+import { findDeckWithTitle } from '../../utils/selectors';
 import { startQuiz } from '../../actions';
 
 const Score = ({ title, correctAnswers, questions, numberOfCards, onBackToDeck, onStartQuiz }) => (

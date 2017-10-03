@@ -1,5 +1,5 @@
 import { Notifications, Permissions } from 'expo';
-import { loadNotificationStatus, saveNotificationStatus } from '../db';
+import { loadNotificationStatus, saveNotificationStatus } from '../utils/db';
 
 const INITIAL_NOTIFICATION_STATUS = {
   installed: null,

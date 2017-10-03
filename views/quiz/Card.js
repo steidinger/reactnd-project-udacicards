@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Button, TouchableHighlight, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { answerCard, flipCard } from '../../actions';
-import { findDeckWithTitle } from '../../selectors';
+import { findDeckWithTitle } from '../../utils/selectors';
 
 const Card = ({ question, answer, showAnswer, position, maxPosition, onAnswerCard, onFlipCard }) => {
   const mainText = showAnswer ? answer : question;

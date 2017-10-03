@@ -1,4 +1,4 @@
-import { rescheduleNotification } from '../notifications';
+import { rescheduleNotification } from '../utils/notifications';
 
 export const ADD_DECK = 'ADD_DECK';
 export const ADD_CARD = 'ADD_CARD';

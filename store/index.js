@@ -1,7 +1,7 @@
 import { createStore as createReduxStore, applyMiddleware } from 'redux';
 import { logger } from 'redux-logger';
 import reducer from '../reducers';
-import { saveDecks } from '../db';
+import { saveDecks } from '../utils/db';
 
 let previousDecks = "";
 

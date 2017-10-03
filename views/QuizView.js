@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { answerCard, flipCard } from '../actions';
-import { findDeckWithTitle } from '../selectors';
+import { findDeckWithTitle } from '../utils/selectors';
 import Score from './quiz/Score';
 import Card from './quiz/Card';
 

@@ -9,9 +9,9 @@ import NewQuestionView from './views/NewQuestionView';
 import DeckView from './views/DeckView';
 import QuizView from './views/QuizView';
 import { createStore } from './store';
-import { loadDecks } from './db';
+import { loadDecks } from './utils/db';
 import { decksLoaded } from './actions';
-import { setupLocalNotification } from './notifications';
+import { setupLocalNotification } from './utils/notifications';
 
 /**
  * Use tabs to switch between deck list and 'new deck' form. Normally I'd
