@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, Button, TouchableHighlight, StyleSheet } from 'react-native';
+import { View, Text, Button, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
 import { answerCard, flipCard } from '../../actions';
 import { findDeckWithTitle } from '../../utils/selectors';
+import styles from '../../styles';
 
 const Card = ({ question, answer, showAnswer, position, maxPosition, onAnswerCard, onFlipCard }) => {
   const mainText = showAnswer ? answer : question;
@@ -27,25 +28,6 @@ const Card = ({ question, answer, showAnswer, position, maxPosition, onAnswerCar
     </View>
   )
 };
-
-const styles = StyleSheet.create({
-  quizPosition: {
-    flexDirection: 'row',
-    alignItems: 'flex-start'
-  },
-  container: {
-    alignItems: 'center',
-    marginBottom: 20
-  },
-  mainText: {
-    fontSize: 18,
-    paddingTop: 4,
-    paddingBottom: 4
-  },
-  link: {
-    color: 'red'
-  },
-});
 
 const mapStateToProps = (state, { navigation }) => {
   const { quiz: { title, questionIndex, showAnswer } } = state;

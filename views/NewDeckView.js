@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { addDeck } from '../actions';
+import styles from '../styles';
 
 export class NewDeckView extends React.Component {
   static navigationOptions = {
@@ -34,22 +35,6 @@ export class NewDeckView extends React.Component {
       </View>);
   }
 }
-
-const styles = StyleSheet.create({
-  label: {
-    fontSize: 24,
-    marginTop: 10,
-    marginBottom: 10
-  },
-  input: {
-    borderRadius: 4,
-    borderColor: 'black',
-    borderWidth: 1,
-    marginTop: 10,
-    marginBottom: 10,
-    fontSize: 24
-  },
-});
 
 const mapStateToProps = (state) => ({});
 

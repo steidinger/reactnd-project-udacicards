@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { startQuiz } from '../actions';
 import { findDeckWithTitle } from '../utils/selectors';
+import styles from '../styles';
 
 export const DeckView = ({ title, questions, onAddCard, onStartQuiz }) => (
   <View style={styles.container}>
@@ -26,33 +27,6 @@ export const DeckView = ({ title, questions, onAddCard, onStartQuiz }) => (
 DeckView.navigationOptions = ({ navigation }) => ({
   title: navigation.state.params.title
 });
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    paddingTop: 10,
-    fontSize: 24
-  },
-  cards: {
-    fontSize: 18,
-    paddingTop: 4,
-    paddingBottom: 4
-  },
-  buttonArea: {
-    marginTop: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  button: {
-    margin: 20,
-    flex: 1
-  }
-});
-
 
 const mapStateToProps = (state, { navigation }) => {
   const { title, questions } = findDeckWithTitle(state, navigation.state.params.title)

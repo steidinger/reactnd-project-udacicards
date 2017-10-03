@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableHighlight, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableHighlight } from 'react-native';
 import { connect } from 'react-redux';
+import styles from '../styles';
 
 export const DeckListView = ({ decks = [], onDeckSelected }) => {
   const data = decks.map(({ title, questions }) => ({ key: title, title, cards: questions }));
@@ -24,28 +25,6 @@ export const DeckListView = ({ decks = [], onDeckSelected }) => {
 DeckListView.navigationOptions = {
   tabBarLabel: 'Deck List'
 }
-
-const styles = StyleSheet.create({
-  listItem: {
-    padding: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#aaa'
-  },
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24
-  },
-  cards: {
-    fontSize: 18,
-    paddingTop: 4,
-    paddingBottom: 4
-  }
-});
 
 const mapStateToProps = ({decks}) => ({
   decks

@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button } from 'react-native';
 import { connect } from 'react-redux';
 import { addCard } from '../actions';
+import styles from '../styles';
 
 class NewQuestionView extends React.Component {
   static navigationOptions = {
@@ -53,17 +54,6 @@ class NewQuestionView extends React.Component {
     )
   }
 }
-
-const styles = StyleSheet.create({
-  input: {
-    borderRadius: 4,
-    borderColor: 'black',
-    borderWidth: 1,
-    marginTop: 10,
-    marginBottom: 10,
-    fontSize: 24
-  }
-});
 
 const mapStateToProps = (state, { navigation }) => ({
   title: navigation.state.params.title
