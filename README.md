@@ -4,6 +4,8 @@ This project contains the code for the Udacity project *UdaciCards*. It is a mob
 
 The app allows a user to manage a collections of virtual "flashcards" and use them to study. Flashcards are organized in "decks". Each deck can contain an arbitrary number of cards and each card contains a question and an answer. The user can add decks to the collection and cards to a deck. Currently there is no way to edit or delete either decks or cards.
 
+The app has been tested on a Motorola Moto Z Play running Android 7.1.1.
+
 ## Installation
 
 Clone this repository into a directory of your choice, then run `npm install` in it to download all dependencies.
