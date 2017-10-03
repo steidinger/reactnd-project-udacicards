@@ -6,7 +6,7 @@ import { findDeckWithTitle } from '../../selectors';
 
 const Card = ({ question, answer, showAnswer, position, maxPosition, onAnswerCard, onFlipCard }) => {
   const mainText = showAnswer ? answer : question;
-  const linkText = showAnswer ? 'Question' : 'Answer';
+  const linkText = showAnswer ? 'Show Question' : 'Show Answer';
   return (
     <View>
       <View style={styles.quizPosition}>
@@ -14,9 +14,9 @@ const Card = ({ question, answer, showAnswer, position, maxPosition, onAnswerCar
       </View>
       <View style={styles.container}>
         <Text style={styles.mainText}>{mainText}</Text>
-        <TouchableHighlight onPress={onFlipCard}>
-          <Text style={styles.link}>{linkText}</Text>
-        </TouchableHighlight>
+      </View>
+      <View style={{ margin: 20 }}>
+        <Button onPress={onFlipCard} title={linkText} />
       </View>
       <View style={{ margin: 20 }}>
         <Button onPress={() => onAnswerCard(true, position == maxPosition)} color="green" title="Correct" />
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start'
   },
   container: {
+    alignItems: 'center',
     marginBottom: 20
   },
   mainText: {
